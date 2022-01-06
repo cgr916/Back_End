@@ -1,0 +1,8 @@
+spring:
+  mvc:
+    # 访问前缀
+    static-path-pattern: /res/**
+  web:
+    resources:
+      static-locations: [classpatch:/hh/]
+
