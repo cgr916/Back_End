@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//OTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mapper.UserMapper">
+    <!--int insertUser();-->
+    <insert id="insertUser">
+        insert into user values(null,"zxy","143256","Hongkong","13346545678");
+    </insert>
+
+    <!--void updateUser();-->
+    <update id="updateUser">
+        update user set password="654321" where id=5
+    </update>
+
+    <!--void deleteUser()-->
+    <delete id="deleteUser">
+        delete from user where id=8
+    </delete>
+
+    <!--User getUserById()-->
+    <select id="getUserById" resultType="com.atguigu.pojo.User">
+        select * from user where id =7
+    </select>
+
+    <!--List<User> getAllUsers-->
+    <select id="getAllUsers" resultType="user">
+        select * from user
+    </select>
+
+</mapper>

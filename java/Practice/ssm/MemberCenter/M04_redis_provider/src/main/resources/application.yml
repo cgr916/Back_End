@@ -1,0 +1,14 @@
+server:
+  port: 4040
+
+spring:
+  application:
+    name: member-redis-provider
+  redis:
+    host: 82.156.56.247
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1010/eureka/

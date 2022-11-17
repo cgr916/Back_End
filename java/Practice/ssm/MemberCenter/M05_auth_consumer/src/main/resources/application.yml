@@ -1,0 +1,19 @@
+server:
+  port: 5050
+
+spring:
+  application:
+    name: member-auth-consumer
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1010/eureka/
+msg:
+  id: "AKIDAhpobum8JDy907cdAu2JQVK0n6FGA6sPgBvg"
+  key: "32frd87KnTDRKVRnK1OImxd74MPvF5OW5wKg254"
+  tag: "2r3f4e"
+  phoneNum:

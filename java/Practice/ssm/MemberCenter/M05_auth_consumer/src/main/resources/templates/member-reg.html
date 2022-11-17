@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keys" content="">
+    <meta name="author" content="">
+    <base th:href="@{/static}"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="layer/layer.js"></script>
+    <script type="text/javascript">
+        $(function () {
+               $("#btn").click(function () {
+                   var phoneNum = $.trim($("[name=phoneNum]").val())
+                   $.ajax({
+                       url:"/member/register.json",
+                       type: "post",
+                       data:{
+                           phoneNum:phoneNum,
+                       },
+                       dataType:"json",
+                       success:function (response) {
+                           let res = response.result
+                           if(res == "SUCCESS"){
+                                layer.msg("send success !")
+                           }else{
+                               layer.msg("send failed,please try again")
+                           }
+                       },
+                       error:function (response) {
+                           layer.msg(response.status +"  "+ response.statusText)
+                       }
+
+                   })
+               }) 
+        })
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" href="index.html" style="font-size:32px;">尚筹网-创意产品众筹平台</a></div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <form action="/member/handleRegister" method="post" class="form-signin" role="form">
+        <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 用户注册</h2>
+        <div class="form-group has-success has-feedback">
+            <input type="text" name="username" class="form-control" id="inputSuccess1" placeholder="请输入登录账号" autofocus>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-success has-feedback">
+            <input type="text" name="userpswd" class="form-control" id="inputSuccess2" placeholder="请输入登录密码" style="margin-top:10px;">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="form-group has-success has-feedback">
+            <input type="text" name="email" class="form-control" id="inputSuccess3" placeholder="请输入邮箱地址" style="margin-top:10px;">
+            <span class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-success has-feedback">
+            <input type="text" name="phoneNum" class="form-control" id="inputSuccess4" placeholder="请输入手机号" style="margin-top:10px;">
+            <span class="glyphicon glyphicon glyphicon-earphone form-control-feedback"></span>
+        </div>
+        <div class="form-group has-success has-feedback">
+            <input type="text" name="authCode" class="form-control" id="inputSuccess5" placeholder="请输入验证码" style="margin-top:10px;">
+            <span class="glyphicon glyphicon glyphicon-comment form-control-feedback"></span>
+        </div>
+        <button type="button" id="btn" class="btn btn-lg btn-success btn-block"> 获取验证码</button>
+        <button type="submit" id="reg" class="btn btn-lg btn-success btn-block">注册</button>
+        <p th:text="${message}"></p>
+    </form>
+</div>
+
+</body>
+</html>

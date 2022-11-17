@@ -1,0 +1,11 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: atguigu-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:3030/eureka

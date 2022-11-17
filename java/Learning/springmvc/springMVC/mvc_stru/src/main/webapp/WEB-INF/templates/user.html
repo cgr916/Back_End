@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<h1>用户表单</h1>
+<form th:action="@{/usr}">
+    userName:<input type="text" name="userName"><br>
+    password:<input type="password" name="password"><br>
+    sex:<input type="radio" name="sex" value="man">man
+        <input type="radio" name="sex" value="woman">woman<br>
+    info:<input type="text" name="info"><br>
+    <input type="submit" name="submit">
+</form>
+</body>
+</html>

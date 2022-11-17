@@ -1,0 +1,19 @@
+spring:
+  mvc:
+    static-path-pattern: /res/**
+
+#  resources:
+#    static-locations: [classpath:/temp/]
+
+  thymeleaf:
+    prefix: classpath:/temp/
+    suffix: .html
+    cache: false
+
+  redis:
+    host: 82.156.56.247
+    password: 123456
+
+server:
+  servlet:
+    context-path: /spring_boot

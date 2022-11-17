@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!-- 连接数据库的用户名 -->
+        <property name="username" value="${jdbc.user}"/>
+        <!-- 连接数据库的密码 -->
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 目标数据库的 URL 地址 -->
+        <property name="url" value="${jdbc.url}"/>
+        <!-- 数据库驱动全类名 -->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+    </bean>
+
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 装配数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 指定 MyBatis 全局配置文件位置 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 指定 Mapper 配置文件位置 -->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/AdminMapper.xml"/>
+    </bean>
+
+    <!-- 配置 MapperScannerConfigurer -->
+    <!-- 把 MyBatis 创建的 Mapper 接口类型的代理对象扫描到 IOC 容器中 -->
+    <bean id="mapperScannerConfigurer"
+          class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 使用 basePackage 属性指定 Mapper 接口所在包 -->
+        <property name="basePackage" value="com.atguigu.crowd.mapper"/>
+    </bean>
+
+
+
+</beans>

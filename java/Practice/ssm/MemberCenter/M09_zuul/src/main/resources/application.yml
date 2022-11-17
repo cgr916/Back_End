@@ -1,0 +1,22 @@
+server:
+  port: 90
+
+spring:
+  application:
+    name: member-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1010/eureka
+zuul:
+  ignored-services: "*"
+  sensitive-headers: "*"
+  routes:
+    member-portal:
+     service-id: member-auth-consumer
+     path: /**
+#     url:  http://localhost:5050
+    member-mysql-provider:
+      service-id: member-mysql-provider
+      path: /mysql/**

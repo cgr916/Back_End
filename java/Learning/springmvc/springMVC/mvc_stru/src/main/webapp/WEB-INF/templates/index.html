@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主界面</title>
+</head>
+<body>
+<h1>主界面</h1>
+<a th:href="@{/hello/test}">点击跳转test.html</a><br/>
+<a th:href="@{/usr}">点击跳转user.html</a><br/>
+<a th:href="@{/req_param(username='root',password=123)}">点击获取param参数 --1</a><br>
+<a th:href="@{/req_params(user_name='mysql',pass_word=123456,info='database')}">点击获取param参数 --2</a>
+<form th:action="@{/hello/form}" method="post">
+
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

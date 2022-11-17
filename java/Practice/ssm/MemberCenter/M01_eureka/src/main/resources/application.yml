@@ -1,0 +1,16 @@
+server:
+  port: 1010
+
+spring:
+  application:
+    name: member_eureka
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
